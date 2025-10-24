@@ -7,7 +7,7 @@ Base = declarative_base()
 
 
 
-DATABASE_URI = "mysql+pymysql://flaskuser:StrongPassword123@<your-vps-ip>/aisummary"
+DATABASE_URI = "mysql+pymysql://aisummary:AiSummary123@184.168.127.161/aisummary"
 
 engine = create_engine(DATABASE_URI, echo=True)
 Session = sessionmaker(bind=engine)
