@@ -33,11 +33,10 @@ from Controller import (
 )
 
 
-# ------------------ 2. Base config ------------------
-load_dotenv()
+
 app = Flask(__name__)
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key="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")
 
 
 app.config['UPLOAD_FOLDER'] = UPLOADFOLDER
