@@ -38,8 +38,7 @@ load_dotenv()
 app = Flask(__name__)
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-HF_API_KEY = os.getenv("HF_API_KEY")  # Hugging Face key
-HF_MODEL = "tiiuae/falcon-7b-instruct"  # free instruct model
+
 
 app.config['UPLOAD_FOLDER'] = UPLOADFOLDER
 
