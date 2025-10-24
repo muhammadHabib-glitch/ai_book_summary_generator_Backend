@@ -7,7 +7,10 @@ Base = declarative_base()
 
 
 
-DATABASE_URI = "mysql+pymysql://aisummary:AiSummary123@184.168.127.161/aisummary"
+DATABASE_URI = (
+    "mssql+pyodbc://sa:DevTeam%4012345@localhost/KotuBriefBackend?"
+    "driver=ODBC+Driver+18+for+SQL+Server&Encrypt=no&TrustServerCertificate=yes"
+)
 
 engine = create_engine(DATABASE_URI, echo=True)
 Session = sessionmaker(bind=engine)
