@@ -1,16 +1,13 @@
-
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import create_engine
 import os
 
 Base = declarative_base()
-
-
-#
 # DATABASE_URI = (
 #     "mssql+pyodbc://sa:DevTeam%4012345@localhost/KotuBriefBackend?"
 #     "driver=ODBC+Driver+18+for+SQL+Server&Encrypt=no&TrustServerCertificate=yes"
 # )
+
 DATABASE_URI = r"mssql+pyodbc://sa:habibfarooq12345@DESKTOP-8TUN3M3\SQLEXPRESS/KotuBrief?driver=ODBC+Driver+17+for+SQL+Server"
 
 engine = create_engine(DATABASE_URI, echo=True)
