@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Book Summary Generator</title>
+    <style>
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      header {
+        padding: 40px 10%;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #00c3ff;
+        text-shadow: 0 0 10px rgba(0, 195, 255, 0.6);
+      }
+
+      header p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        color: #d0eaff;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 50px auto;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 0 20px rgba(0, 195, 255, 0.2);
+        backdrop-filter: blur(10px);
+      }
+
+      .content {
+        text-align: center;
+      }
+
+      .content h2 {
+        font-size: 2rem;
+        color: #00eaff;
+        margin-bottom: 20px;
+      }
+
+      .content p {
+        font-size: 1.1rem;
+        color: #e2f2ff;
+        margin-bottom: 30px;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        text-align: left;
+      }
+
+      .feature-box {
+        background: rgba(255, 255, 255, 0.05);
+        border-left: 4px solid #00eaff;
+        padding: 20px;
+        border-radius: 10px;
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .feature-box:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .feature-box span {
+        font-size: 1.5rem;
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 60px;
+        padding: 30px 0;
+        color: #bcd8e6;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 2.2rem;
+        }
+
+        .container {
+          margin: 30px 20px;
+          padding: 25px;
+        }
+
+        .content p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>AI Book Summary Generator</h1>
+      <p>Making reading faster, deeper, and more engaging</p>
+    </header>
+
+    <section class="container">
+      <div class="content">
+        <h2>About the Application</h2>
+        <p>
+          The AI Book Summary Generator is a smart mobile app built to make
+          reading faster, deeper, and more engaging. It connects users with a
+          massive collection of <strong>144,228 books</strong>, scraped from the
+          Gutenberg website and stored in our own database.
+        </p>
+
+        <div class="features">
+          <div class="feature-box">
+            <span>📘</span> Read any book directly within the app
+          </div>
+          <div class="feature-box">
+            <span>🧠</span> Generate AI summaries of 1, 10, or 30 minutes for
+            any book
+          </div>
+          <div class="feature-box">
+            <span>🎧</span> Listen to summaries in a natural, human-like female
+            voice
+          </div>
+          <div class="feature-box">
+            <span>📤</span> Upload your own books or research papers for
+            personalized summaries
+          </div>
+          <div class="feature-box">
+            <span>❓</span> Ask AI questions related to any book
+          </div>
+          <div class="feature-box">
+            <span>🧩</span> Take interactive quizzes to test understanding and
+            learning
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © 2025 AI Book Summary Generator. All rights reserved.
+    </footer>
+  </body>
+</html>

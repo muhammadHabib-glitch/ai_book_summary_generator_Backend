@@ -2,22 +2,19 @@
 import os, re, math
 from hashlib import sha256
 from datetime import datetime
-
 import requests
-from flask import Flask, Blueprint, request, jsonify, send_from_directory, url_for
+from flask import Flask, Blueprint, request, jsonify, send_from_directory, url_for, render_template
 from werkzeug.utils import secure_filename
 from openai import OpenAI
 from dotenv import load_dotenv
 from gtts import gTTS
 from  Model import  Library
-
 import pdfplumber
 import docx
 from pptx import Presentation
 from openpyxl import load_workbook
 from ebooklib import epub, ITEM_DOCUMENT
 from sqlalchemy import text
-
 from extensions import mail
 from Config import (
     MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS, MAIL_USERNAME, MAIL_PASSWORD,
@@ -31,11 +28,7 @@ from Controller import (
     upload_book_controller, get_user_books_controller, update_book_controller,
     delete_book_controller, get_book_controller, get_user_books
 )
-
-
-
 app = Flask(__name__)
-
 client = OpenAI(api_key="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")
 
 
@@ -57,7 +50,9 @@ def uploaded_file(filename):
     return send_from_directory("uploads", filename)
 
 
-
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 ALLOWED_EXTENSIONS = {"pdf", "docx", "txt", "pptx", "xlsx", "epub"}
 
