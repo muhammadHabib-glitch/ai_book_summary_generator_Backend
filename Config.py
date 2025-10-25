@@ -15,7 +15,7 @@ Session = sessionmaker(bind=engine)
 
 # config.py
 UPLOAD_FOLDER = "uploads/profile_images"
-UPLOAD_FOLDER = "uploads/profile_images"
+
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
 # Upload folder
