@@ -10,7 +10,7 @@ Base = declarative_base()
 class Book(Base):
     __tablename__ = 'Books'
     book_id = Column(Integer, primary_key=True, autoincrement=True)
-    user_id = Column(Integer, nullable=True)   # 👈 This allows NULL
+    user_id = Column(Integer, nullable=True)
     title = Column(String(255))
     author = Column(String(255))
     cover_image_url = Column(String(500))
@@ -19,12 +19,13 @@ class Book(Base):
     created_at = Column(DateTime, default=datetime.now)
     description = Column(Text, nullable=True)
 
+
 # --- Database connection ---
 DATABASE_URI = (
     "mssql+pyodbc://sa:DevTeam%4012345@localhost/KotuBriefBackend?"
     "driver=ODBC+Driver+18+for+SQL+Server&Encrypt=no&TrustServerCertificate=yes"
 )
-engine = create_engine(DATABASE_URI, echo=True)
+engine = create_engine(DATABASE_URI, echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
 
@@ -33,8 +34,14 @@ json_file = 'gutenberg_books.json'
 with open(json_file, 'r', encoding='utf-8') as f:
     books = json.load(f)
 
-# --- Insert data into the database ---
-for book_data in books:
+total_books = len(books)
+print(f"📘 Total books to insert: {total_books}")
+
+# --- Insert data into the database in batches ---
+BATCH_SIZE = 100
+batch = []
+
+for index, book_data in enumerate(books, start=1):
     try:
         new_book = Book(
             user_id=None,
@@ -46,16 +53,30 @@ for book_data in books:
             created_at=datetime.now(),
             description=None
         )
-        session.add(new_book)
+        batch.append(new_book)
+
+        # Commit every 100 records
+        if len(batch) >= BATCH_SIZE:
+            session.add_all(batch)
+            session.commit()
+            progress = (index / total_books) * 100
+            print(f"✅ Inserted batch up to record {index} ({progress:.2f}% done)")
+            batch.clear()
+
     except Exception as e:
+        session.rollback()
         print(f"⚠️ Error adding {book_data.get('Book Name')}: {e}")
 
-# --- Commit all inserts ---
-try:
-    session.commit()
-    print("✅ All books inserted successfully!")
-except Exception as e:
-    session.rollback()
-    print("❌ Failed to insert books:", e)
-finally:
-    session.close()
+# --- Insert remaining records ---
+if batch:
+    try:
+        session.add_all(batch)
+        session.commit()
+        progress = (total_books / total_books) * 100
+        print(f"✅ Final batch inserted ({progress:.2f}% done)")
+    except Exception as e:
+        session.rollback()
+        print("❌ Failed to insert final batch:", e)
+
+session.close()
+print("🎉 All books inserted successfully in batches!")
