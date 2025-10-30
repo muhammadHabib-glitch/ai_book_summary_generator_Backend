@@ -775,7 +775,7 @@ def upload_book_cover():
     # Save just filename in DB (you can modify your Books table insert here)
     # e.g., book.cover_image_url = filename
 
-    file_url = f"http://192.168.18.98:5000/uploads/{filename}"
+    file_url = f"https://kotubrief.com/uploads/{filename}"
     return jsonify({"file_url": file_url}), 200
 
 
